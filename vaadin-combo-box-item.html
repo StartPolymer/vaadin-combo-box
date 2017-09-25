@@ -40,7 +40,10 @@ This program is available under Apache License Version 2.0, available at https:/
       /**
        * The text label corresponding to the item
        */
-      label: String,
+      label: {
+        type: String,
+        observer: '_labelChanged'
+      },
 
       /**
        * True when item is selected
@@ -84,6 +87,10 @@ This program is available under Apache License Version 2.0, available at https:/
           Polymer.dom(this.root).appendChild(this._itemTemplateInstance.root);
         }
       }
+    },
+    
+    _labelChanged: function(newValue) {
+      this.$.label.innerHTML = newValue;
     },
 
     _updateTemplateInstanceVariable: function(variable, value, _itemTemplateInstance) {
